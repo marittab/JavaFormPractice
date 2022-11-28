@@ -1,5 +1,7 @@
 package com.example.javaformpractice.Collections;
 
+import com.example.javaformpractice.BlackKnight;
+
 import java.nio.channels.Pipe;
 import java.util.*;
 
@@ -89,8 +91,91 @@ public class CollectionClass {
         map.containsValue("Eliza");
         map.size();
 
+        Integer one = 1; // lietojot int nestrādā
+        Integer otherOne = 1;
 
+        //is objects are equals
+        System.out.println(one.hashCode() == otherOne.hashCode());
+        System.out.println(one.equals(otherOne));
+
+        BlackKnight knight1 = new BlackKnight("Sam");
+        BlackKnight knight2 = new BlackKnight("Sam");
+
+        System.out.println(knight1.equals(knight2));
+
+        List<BlackKnight> knights = Arrays.asList(knight1, knight2);
+
+        System.out.println(knights.contains(new BlackKnight("Sam")));
+
+        System.out.println();
+
+        Set<BlackKnight> knights2 = new HashSet<>();
+        knights2.add(knight1);
+        knights2.add(knight2);
+
+        System.out.println(knights2.contains(new BlackKnight("Sam")));
+
+
+
+    Map<BlackKnight, String> map2 = new HashMap<>();
+    BlackKnight knight5 = new BlackKnight("John");
+    BlackKnight knight6 = new BlackKnight("Joshua");
+    BlackKnight knight7 = new BlackKnight("Susan");
+
+        map2.put(knight5, knight5.getName());
+        map2.put(knight6, knight6.getName());
+        map2.put(knight7, knight7.getName());
+
+        System.out.println(map2.containsKey(new BlackKnight("Susan")));
+
+        Integer x = 3;
+        System.out.println(x.compareTo(2));
+        System.out.println(x.compareTo(3));
+        System.out.println(x.compareTo(6));
+
+        System.out.println();
+        Comparator<Integer> intComparator = Comparator.naturalOrder();
+        System.out.println(intComparator.compare(3, 2));
+        System.out.println(intComparator.compare(3, 3));
+        System.out.println(intComparator.compare(3, 4));
+
+
+        List<BlackKnight> knights3 = new ArrayList<>();
+        BlackKnight knight9 = new BlackKnight("Ilze");
+        BlackKnight knight8 = new BlackKnight("Ieva");
+
+        knights3.add(knight9);
+        knights3.add(knight8);
+
+        Collections.sort(knights3, new Comparator<BlackKnight>() {
+
+            @Override
+            public int compare(BlackKnight k1, BlackKnight k2) {
+                return (int) k1.getName().charAt(0) - (int) k2.getName().charAt(0);
+            }
+        });
+        for(BlackKnight knight : knights3){
+            System.out.println(knight.getName());
+        }
 
     }
-
 }
+// COMPARATOR ===> compare(obj1, obj2)
+// COMPARABLE ===> compareTo(obj)
+
+/*
+* A.compareTo(B)
+* value > 0 { ..., B, A,...}
+* value == 0 { ..., A, B,...}//equal
+* value < 0 { ..., A,B,,...}
+*
+*
+*Compare (A, B)
+* Value > 0 { ...B,A...}
+* value==0 {...A,B..}
+* value<0 {...A,B...}
+* */
+
+//write a compare method implementation to compare knights by name
+//checking the next character if current characters are equal.
+//should also not be case-sensitive

@@ -18,6 +18,18 @@ public class BlackKnight {
     public String getName() {
         return name;
     }
+
+    public byte getArms() {
+        return arms;
+    }
+
+    public byte getHead() {
+        return head;
+    }
+
+    public byte getLegs() {
+        return legs;
+    }
     public boolean isAlive(){
         return alive;
     }
@@ -110,6 +122,30 @@ public class BlackKnight {
         }
         return allKnights[DEFAULT_KNIGHT_LIST_SIZE - 1];
 
+    }
+    //.equals method
+    @Override
+    public boolean equals(Object o){
+        if(this==o) return true;//check for self
+        if(o == null || getClass() != o.getClass()) return false;
+        BlackKnight knight = (BlackKnight) o;
+
+        return (arms == knight.getArms()) &&
+                (legs == knight.getLegs()) &&
+                (head == knight.getHead()) &&
+                (alive == knight.isAlive()) &&
+                (name.equals(knight.getName()));
+    }
+
+    @Override
+    public int hashCode(){
+        int result = 31 * (name.hashCode() +
+                ((Byte) arms).hashCode()+
+                ((Byte) legs).hashCode()+
+                ((Byte) head).hashCode()+
+                ((Boolean) alive).hashCode());
+
+        return result;
     }
 }
 
