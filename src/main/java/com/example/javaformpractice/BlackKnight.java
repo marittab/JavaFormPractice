@@ -1,7 +1,7 @@
 package com.example.javaformpractice;
 
 
-public class BlackKnight {
+public class BlackKnight implements Comparable<BlackKnight>{
     private String name;
     private byte arms = 2;
     private byte legs = 2;
@@ -146,6 +146,10 @@ public class BlackKnight {
                 ((Boolean) alive).hashCode());
 
         return result;
+    }
+    @Override
+    public int compareTo(BlackKnight knight){
+        return this.name.charAt(0) - knight.getName().charAt(0);
     }
 }
 
