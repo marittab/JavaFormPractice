@@ -192,62 +192,8 @@ public class CollectionClass {
         System.out.println(Collections.min(listt, Collections.reverseOrder()));
 
 
-        Collections.sort(list, new Comparator<List>() {
-            @Override
-            public int compare(List o1, List o2) {
-                return 0;
-            }
-        });
-
-        List<Users> allUsers = new ArrayList<>(
-                Arrays.asList(
-                        new Users("George"),
-                        new Users("Dmitrij"),
-                        new Users("Juris"),
-                        new Users("Zanis"),
-                        new Users("Jurgis"),
-                        new Users("Karlis")
-
-                        ));
-
-        Map<String, List<Users>> map3 = new HashMap<>();
-
-        for (Users user:allUsers) {
-            String nameKey = user.getName();
-
-            if(map3.containsKey(nameKey)){
-                List<Users> nameUsers = map3.get(nameKey);
-                nameUsers.add(user);
-                map3.put(nameKey, nameUsers);
-            }else{
-                List<Users> newNameUsers = new ArrayList<>();
-               newNameUsers.add(user);
-                map3.put(nameKey, newNameUsers);
-            }
-        }
-        for (Map.Entry entry : map3.entrySet()) {
-            System.out.print(entry.getKey()+"===>");
-
-           for(Users user: (List<Users>)entry.getValue()){
-               System.out.print(user.toString2()+", ");
-           }
-
-        }
-
-        Box<Users> box = new Box<>();
-        box.setItem(new Users("Sam"));
-
-        Box intBox = new Box<Integer>();
-
-
-        MetalBox<Integer> metalBox = new MetalBox<>();
-        metalBox.setItem(5);
-
     }
-
-}
-
-
+    }
 
             /*@Override
             public int compare(BlackKnight k1, BlackKnight k2) {
